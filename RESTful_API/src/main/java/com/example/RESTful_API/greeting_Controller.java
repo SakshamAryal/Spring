@@ -13,6 +13,14 @@ public class greeting_Controller {
 
     @GetMapping("/greeting")
     public Greeting greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
-        return new Greeting(counter.incrementAndGet(), String.format(template, name));
+        return new Greeting(counter.incrementAndGet(), String.format(template,
+                name));
     }
+
+    @GetMapping("applicant")
+    public Applicant applicant(@RequestParam(defaultValue = "Enter a name") String name) {
+        String app = "Name: %s";
+        return new Applicant(counter.incrementAndGet(), String.format(app, name));
+    }
+
 }
