@@ -1,5 +1,7 @@
 package com.example.RESTful_API;
 
+import java.util.concurrent.atomic.AtomicLong;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -7,10 +9,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class greeting_Controller {
     public static final String template = "Hello, %s!";
-    private final Atomiclong counter = new Atomiclong();
+    private final AtomicLong counter = new AtomicLong();
 
     @GetMapping("/greeting")
-    public Greeting greeting(@RequestParam(value = "name", defaultValue = "World") String name){
-        return new Greeting(counter.incrementandGet(), String.Format(template, name));
+    public Greeting greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
+        return new Greeting(counter.incrementAndGet(), String.format(template, name));
     }
 }
